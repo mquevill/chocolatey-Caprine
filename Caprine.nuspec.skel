@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     
-    <id>Caprine</id>
+    <id>caprine</id>
     <version>VERVERVER</version>
     <owners>Michael Quevillon</owners>
     
