@@ -1,0 +1,18 @@
+VERIFICATION
+
+Verification is intended to assist the Chocolatey moderators and community
+in verifying that this package's contents are trustworthy.
+
+The installer has been downloaded from the official download link listed on <https://sindresorhus.com/caprine/>
+and can be verified like this:
+
+1. Download the installer:
+  <https://sindresorhus.com/caprine/>
+2. Use one of the following methods to obtain the checksum:
+  - Use powershell function 'Get-Filehash -Algorithm sha512'
+  - Use chocolatey utility 'checksum.exe -t sha512'
+
+  checksum type: sha512
+  checksum32: NUMNUMNUM
+
+File 'LICENSE.txt' is obtained from <https://github.com/sindresorhus/caprine/blob/master/license>

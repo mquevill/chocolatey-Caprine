@@ -1,0 +1,20 @@
+﻿$ErrorActionPreference = 'Stop';
+
+$packageName  = 'Caprine'
+$toolsDir     = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
+$fileLocation = Join-Path $toolsDir 'FILEFILEFILE'
+
+$packageArgs = @{
+  packageName   = $packageName
+  file          = $fileLocation
+  fileType      = 'exe'
+  silentArgs    = "/S     `"$env:TEMP\$env:ChocolateyPackageName.$env:ChocolateyPackageVersion.log`""
+
+  validExitCodes= @(0)
+
+  softwareName  = 'Caprine*'
+  checksum      = 'NUMNUMNUM'
+  checksumType  = 'sha512'
+}
+
+Install-ChocolateyInstallPackage @packageArgs

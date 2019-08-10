@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    
+    <id>Caprine</id>
+    <version>VERVERVER</version>
+    <owners>Michael Quevillon</owners>
+    
+    <title>Caprine</title>
+    <authors>SindreSorhus</authors>
+    <projectUrl>https://sindresorhus.com/caprine/</projectUrl>
+    <iconUrl>https://sindresorhus.com/caprine/images/Icon.png</iconUrl>
+    <licenseUrl>https://github.com/sindresorhus/caprine/blob/master/license</licenseUrl>
+    <docsUrl>https://github.com/sindresorhus/caprine/blob/master/readme.md</docsUrl>
+    <projectSourceUrl>https://github.com/sindresorhus/caprine</projectSourceUrl>
+    <packageSourceUrl>https://github.com/mquevill/chocolatey-Caprine</packageSourceUrl>
+    <tags>messenger facebook chat</tags>
+    <summary>An elegant, privacy-focused Facebook Messenger app</summary>
+    <description>Caprine is an unofficial and privacy-focused Facebook Messenger app with many useful features.</description>
+    <releaseNotes>https://github.com/sindresorhus/caprine/releases</releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" exclude="**\*.skel"/>
+  </files>
+</package>
