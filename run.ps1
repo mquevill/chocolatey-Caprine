@@ -1,9 +1,10 @@
 # Download newest version and get version number
 $pkg = "Caprine"
-$version = "2.35.0"
+$lpkg = "$pkg".toLower()
+$version = "2.36.0"
 $fname = "$pkg.Setup.$version.exe"
 
-#Update sgt-puzzles.nuspec with version number
+#Update nuspec with version number
 (Get-Content .\$pkg.nuspec.skel).replace('VERVERVER', $version) | Set-Content .\$pkg.nuspec
 
 #Update tools/VERIFICATION.txt with checksum
@@ -14,8 +15,8 @@ $csum = (checksum -t=sha512 .\tools\$fname)
 (Get-Content .\tools\chocolateyinstall.ps1.skel).replace('NUMNUMNUM', $csum).replace('FILEFILEFILE', $fname) | Set-Content .\tools\chocolateyinstall.ps1
 
 #Package and push to Chocolatey
-cpack $pkg.nuspec
-cpush $pkg.$version.nupkg
+cpack .\$pkg.nuspec
+cpush .\$lpkg.$version.nupkg
 
 #Clean up
-rm Caprine.nuspec,tools\VERIFICATION.txt,tools\chocolateyinstall.ps1
+#rm .\$pkg.nuspec, .\tools\VERIFICATION.txt, .\tools\chocolateyinstall.ps1
