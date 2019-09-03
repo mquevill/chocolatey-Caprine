@@ -6,13 +6,11 @@ $fileLocation = Join-Path $toolsDir 'FILEFILEFILE'
 
 $packageArgs = @{
   packageName   = $packageName
+  softwareName  = 'Caprine*'
   file          = $fileLocation
   fileType      = 'exe'
-  silentArgs    = "/S     `"$env:TEMP\$env:ChocolateyPackageName.$env:ChocolateyPackageVersion.log`""
-
+  silentArgs    = "/S"
   validExitCodes= @(0)
-
-  softwareName  = 'Caprine*'
   checksum      = 'NUMNUMNUM'
   checksumType  = 'sha512'
 }
