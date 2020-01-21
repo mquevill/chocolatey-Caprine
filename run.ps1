@@ -12,7 +12,7 @@ $csum = (checksum -t=sha512 .\$fname)
 (Get-Content .\tools\VERIFICATION.txt.skel).replace('NUMNUMNUM', $csum) | Set-Content .\tools\VERIFICATION.txt
 
 #Update tools/chocolateyinstall.ps1 with filename and checksum
-(Get-Content .\tools\chocolateyinstall.ps1.skel).replace('FILEFILEFILE', $fname).replace('NUMNUMNUM', $csum).replace('VERVERVER', $version) | Set-Content .\tools\chocolateyinstall.ps1
+(Get-Content .\tools\chocolateyinstall.ps1.skel).replace('NUMNUMNUM', $csum).replace('VERVERVER', $version) | Set-Content .\tools\chocolateyinstall.ps1
 
 #Package and push to Chocolatey
 cpack .\$pkg.nuspec
