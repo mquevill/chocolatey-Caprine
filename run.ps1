@@ -1,18 +1,18 @@
 # Download newest version and get version number
 $pkg = "Caprine"
 $lpkg = "$pkg".toLower()
-$version = "2.41.1"
+$version = "2.42.0"
 $fname = "$pkg-Setup-$version.exe"
 
 #Update nuspec with version number
 (Get-Content .\$pkg.nuspec.skel).replace('VERVERVER', $version) | Set-Content .\$pkg.nuspec
 
 #Update tools/VERIFICATION.txt with checksum
-$csum = (checksum -t=sha512 .\tools\$fname)
+$csum = (checksum -t=sha512 .\$fname)
 (Get-Content .\tools\VERIFICATION.txt.skel).replace('NUMNUMNUM', $csum) | Set-Content .\tools\VERIFICATION.txt
 
 #Update tools/chocolateyinstall.ps1 with filename and checksum
-(Get-Content .\tools\chocolateyinstall.ps1.skel).replace('NUMNUMNUM', $csum).replace('FILEFILEFILE', $fname) | Set-Content .\tools\chocolateyinstall.ps1
+(Get-Content .\tools\chocolateyinstall.ps1.skel).replace('FILEFILEFILE', $fname).replace('NUMNUMNUM', $csum).replace('VERVERVER', $version) | Set-Content .\tools\chocolateyinstall.ps1
 
 #Package and push to Chocolatey
 cpack .\$pkg.nuspec

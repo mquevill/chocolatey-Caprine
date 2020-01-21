@@ -2,17 +2,19 @@
 
 $packageName  = 'Caprine'
 $toolsDir     = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
-$fileLocation = Join-Path $toolsDir 'FILEFILEFILE'
+$url          = 'https://github.com/sindresorhus/caprine/releases/download/vVERVERVER/Caprine-Setup-VERVERVER.exe'
 
 $packageArgs = @{
   packageName   = $packageName
   softwareName  = 'Caprine*'
-  file          = $fileLocation
   fileType      = 'exe'
-  silentArgs    = "/S"
-  validExitCodes= @(0)
+  url           = $url
+
   checksum      = 'NUMNUMNUM'
   checksumType  = 'sha512'
+
+  silentArgs    = "/S"
+  validExitCodes= @(0)
 }
 
-Install-ChocolateyInstallPackage @packageArgs
+Install-ChocolateyPackage @packageArgs
