@@ -1,7 +1,7 @@
 # Download newest version and get version number
 $pkg = "Caprine"
 $lpkg = "$pkg".toLower()
-$version = "2.45.0"
+$version = "2.46.0"
 $fname = "$pkg-Setup-$version.exe"
 
 #Update nuspec with version number
@@ -19,4 +19,4 @@ cpack .\$pkg.nuspec
 cpush .\$lpkg.$version.nupkg
 
 #Clean up
-#rm .\$pkg.nuspec, .\tools\VERIFICATION.txt, .\tools\chocolateyinstall.ps1
+rm .\$pkg.nuspec, .\tools\VERIFICATION.txt, .\tools\chocolateyinstall.ps1
