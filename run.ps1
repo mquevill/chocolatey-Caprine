@@ -1,7 +1,7 @@
 # Download newest version and get version number
 $pkg = "Caprine"
 $lpkg = "$pkg".toLower()
-$version = "2.52.3"
+$version = "2.52.4"
 $fname = "$pkg-Setup-$version.exe"
 
 #Update nuspec with version number
