@@ -1,17 +1,17 @@
 # Get information from GitHub repository
-$repo = "sindresorhus/caprine"
-$url =  "https://api.github.com/repos/$repo/releases"
-$tag = (Invoke-WebRequest $url | ConvertFrom-Json)[0].tag_name
-$version = $tag -replace 'v','' # assumes "vX.Y.Z" format
-$download = "https://github.com/$repo/releases/download/$tag"
+[String] $repo = "sindresorhus/caprine"
+[String] $url =  "https://api.github.com/repos/$repo/releases"
+[String] $tag = (Invoke-WebRequest $url | ConvertFrom-Json)[0].tag_name
+[Version] $version = $tag -replace 'v','' # assumes "vX.Y.Z" format
+[String] $download = "https://github.com/$repo/releases/download/$tag"
 
 # Download latest.yml and extract information
-$fyml = "latest.yml"
-$info = (Invoke-WebRequest "$download/$fyml" | ConvertFrom-Yaml)
-$fname = $info.path
-$pkg = $fname.split('-')[0] # assumes "Pkg-xxx.exe" format
-$lpkg = $pkg.toLower()
-$csum = $info.sha512
+[String] $fyml = "latest.yml"
+[Object] $info = (Invoke-WebRequest "$download/$fyml" | ConvertFrom-Yaml)
+[String] $fname = $info.path
+[String] $pkg = $fname.split('-')[0] # assumes "Pkg-xxx.exe" format
+[String] $lpkg = $pkg.toLower()
+[String] $csum = $info.sha512
 
 # Update nuspec with version number
 (Get-Content .\$pkg.nuspec.skel).replace('VERVERVER', $version) | Set-Content .\$pkg.nuspec
