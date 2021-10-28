@@ -1,17 +1,29 @@
-# Get information from GitHub repository
+function Get-RemoteChecksum {
+	Param (
+		[Parameter(Mandatory=$true)] [String] $URL,
+		[Parameter()] [String] $Algorithm='sha512'
+	)
+	[String] $fn = [System.IO.Path]::GetTempFileName()
+	Invoke-WebRequest $URL -OutFile $fn -UseBasicParsing
+	[String] $res = Get-FileHash $fn -Algorithm $Algorithm | % Hash
+	rm $fn -ea ignore
+	return $res
+}
+
+# Get information about GitHub repository
 [String] $repo = "sindresorhus/caprine"
 [String] $url =  "https://api.github.com/repos/$repo/releases"
 [String] $tag = (Invoke-WebRequest $url | ConvertFrom-Json)[0].tag_name
-[Version] $version = $tag -replace 'v','' # assumes "vX.Y.Z" format
 [String] $download = "https://github.com/$repo/releases/download/$tag"
 
 # Download latest.yml and extract information
 [String] $fyml = "latest.yml"
 [Object] $info = (Invoke-WebRequest "$download/$fyml" | ConvertFrom-Yaml)
+[Version] $version = $info.version
 [String] $fname = $info.path
 [String] $pkg = $fname.split('-')[0] # assumes "Pkg-xxx.exe" format
 [String] $lpkg = $pkg.toLower()
-[String] $csum = $info.sha512
+[String] $csum = Get-RemoteChecksum("$download/$fname") # latest.yml doesn't have a useful sha512...
 
 # Update nuspec with version number
 (Get-Content .\$pkg.nuspec.skel).replace('VERVERVER', $version) | Set-Content .\$pkg.nuspec
