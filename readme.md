@@ -1,5 +1,5 @@
 # Chocolatey-Caprine
-Source files of Chocolatey package for Caprine
+Source files of [Chocolatey package for Caprine](https://community.chocolatey.org/packages/caprine)
 
 Automatically downloads the newest version of Caprine,
 packages it into a Chocolatey package,
