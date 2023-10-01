@@ -35,8 +35,8 @@ function Get-RemoteChecksum {
 (Get-Content .\tools\chocolateyinstall.ps1.skel).replace('NUMNUMNUM', $csum).replace('VERVERVER', $version) | Set-Content .\tools\chocolateyinstall.ps1
 
 # Package and push to Chocolatey
-cpack .\$pkg.nuspec
-cpush .\$lpkg.$version.nupkg
+choco pack .\$pkg.nuspec
+choco push .\$lpkg.$version.nupkg
 
 # Clean up
 rm .\$pkg.nuspec, .\tools\VERIFICATION.txt, .\tools\chocolateyinstall.ps1
