@@ -13,7 +13,8 @@ function Get-RemoteChecksum {
 # Get information about GitHub repository
 [String] $repo = "sindresorhus/caprine"
 [String] $url =  "https://api.github.com/repos/$repo/releases"
-[String] $tag = (Invoke-WebRequest $url | ConvertFrom-Json)[0].tag_name
+[String] $tag = "" # Custom tag here ("vX.Y.Z"), blank if newest
+if ($tag -eq "") {$tag = (Invoke-WebRequest $url | ConvertFrom-Json)[0].tag_name}
 [String] $download = "https://github.com/$repo/releases/download/$tag"
 
 # Download latest.yml and extract information
